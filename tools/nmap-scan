@@ -1,2 +1,16 @@
 cd tools/nmap-scan
 ./nmap-scan.sh
+
+#!/bin/bash
+
+# A simple script to perform a network scan using Nmap
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <target>"
+    exit 1
+fi
+
+target=$1
+
+echo "Scanning target: $target"
+nmap -A -T4 $target
