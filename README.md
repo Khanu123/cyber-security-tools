@@ -19,6 +19,7 @@ A collection of cybersecurity tools and scripts for various purposes, including 
 ## Scripts
 
 - `log-analyzer.py`: A Python script to analyze log files for suspicious activity.
+- `advanced-log-analyzer.py`: An enhanced log analyzer with keyword support.
 - `hash-cracker.py`: A Python script to crack hashed passwords using a dictionary attack.
 
 ## Installation
