@@ -41,7 +41,7 @@ If a specific tool has no external dependencies, it can be run directly with Pyt
 
 - Add one folder per tool with its own README.
 - Add sample input and output for each script.
-- Add tests for parsing and detection functions.
+- Expand tests for parsing and detection functions.
 - Add a top-level `docs/` folder with screenshots.
 - Remove or clearly label any offensive examples as controlled lab exercises.
 
@@ -72,3 +72,16 @@ For employers, this repository shows security curiosity and Python scripting pra
 - Why defensive tools need clear authorization boundaries.
 - How sample input/output makes a security script easier to review.
 - Which scripts should be split into stronger standalone projects.
+
+## Current Code Improvements
+
+- Log analyzers now return findings as data as well as supporting CLI output.
+- Advanced log analyzer has reusable keyword matching functions.
+- Hash recovery lab supports selectable hash algorithms and returns results cleanly.
+- Tests now work with the existing script filenames and folder layout.
+
+## Testing
+
+```bash
+python -m unittest discover -s tests -v
+```

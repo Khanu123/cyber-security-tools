@@ -1,21 +1,32 @@
+import importlib.util
 import unittest
-from scripts.log_analysis.advanced_log_analyzer import analyze_log
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def load_module(path, name):
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
 
 class TestLogAnalyzer(unittest.TestCase):
+    def test_basic_analyzer_returns_matching_lines(self):
+        module = load_module(ROOT / "scripts" / "log-analyzer.py", "log_analyzer")
+        lines = ["INFO ok", "WARNING risky", "ERROR failed"]
+        self.assertEqual(module.analyze_lines(lines), ["WARNING risky", "ERROR failed"])
 
-    def test_analyze_log(self):
-        log_data = """INFO: This is an info message
-        WARNING: This is a warning message
-        ERROR: This is an error message"""
-        with open('test_log.txt', 'w') as f:
-            f.write(log_data)
+    def test_advanced_analyzer_returns_keyword_matches(self):
+        module = load_module(
+            ROOT / "scripts" / "log-analysis" / "advanced-log-analyzer.py",
+            "advanced_log_analyzer",
+        )
+        lines = ["INFO ok", "failed login", "admin success"]
+        self.assertEqual(module.analyze_lines(lines, ["failed"]), ["failed login"])
 
-        expected_output = ["WARNING: This is a warning message", "ERROR: This is an error message"]
 
-        with open('test_log.txt', 'r') as f:
-            output = analyze_log(f, ["WARNING", "ERROR"])
-
-        self.assertEqual(output, expected_output)
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
