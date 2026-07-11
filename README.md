@@ -48,3 +48,27 @@ If a specific tool has no external dependencies, it can be run directly with Pyt
 ## Portfolio Note
 
 For employers, this repository shows security curiosity and Python scripting practice. The strongest next step is to make each tool self-contained with examples and tests.
+
+## Employer Review
+
+| Area | Evidence |
+| --- | --- |
+| Role relevance | Junior Cyber Security Analyst / SOC Analyst / Python Automation |
+| Main security lesson | Small scripts can support repeatable defensive checks when they are documented and scoped properly |
+| Defensive value | Shows Python practice across logs, scanning wrappers, and controlled password-strength labs |
+| Safe scope | Tools should only be used in owned or explicitly authorized environments |
+
+## Professional Standards for This Repo
+
+- Each script should have a clear purpose, expected input, and expected output.
+- Any scanner should use conservative defaults and permission-based wording.
+- Any password-related example should be framed as local password-strength education.
+- Reports should be written in a way a junior analyst could hand to a teammate.
+- Future tools should include tests before being treated as portfolio-ready.
+
+## Interview Talking Points
+
+- How Python helps automate repetitive security checks.
+- Why defensive tools need clear authorization boundaries.
+- How sample input/output makes a security script easier to review.
+- Which scripts should be split into stronger standalone projects.
